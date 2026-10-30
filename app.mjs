@@ -1,6 +1,7 @@
 import {createGame,swap,hammer,reshuffle,legalMoves,goalValue,restore,recordResult,localDay,DIFFICULTIES} from './engine.mjs';
 import {fruit,crate,basket,svg} from './art.mjs';
 import {zh,en} from './i18n.mjs';
+document.body.classList.toggle('embedded',window.self!==window.top);
 const $=id=>document.getElementById(id),KEY='fruit-garden-v1';let saved={};try{saved=JSON.parse(localStorage.getItem(KEY))||{};}catch{}
 let lang=localStorage.getItem('fruit-garden-language')==='en'?'en':'zh',t=lang==='en'?en:zh,state=restore(saved.current),records=saved.records||{},sound=saved.sound!==false,selected=null,hints=[],hammerMode=false,busy=false,token=0,audio,focusPos=0;
 const seed=()=>crypto.getRandomValues(new Uint32Array(1))[0];
